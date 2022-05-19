@@ -1,14 +1,23 @@
-import { useState, useEffect } from 'react';
-import updateParameter from '../api/updateParameter';
-import config from '../config.json';
+import { useState, useEffect } from 'react'
+import initialize from '../api/initialize'
+import updateParameter from '../api/updateParameter'
+import config from '../config.json'
 
 function HomePage() {
-  const sessId = 1234
-  const streamSrc = `${config.baseUrl}/stream/${sessId}`
-
+  const [sessID, setSessID] = useState('')
   const [excitement, setExcitement] = useState(0.5);
+
   useEffect(() => {
-    updateParameter(sessId, { excitement })
+    const getSessID = async () => {
+      const newID = await initialize()
+      setSessID(newID)
+    }
+    getSessID()
+  }, [])
+
+  useEffect(() => {
+    if (!sessID) return
+    updateParameter(sessID, { excitement })
   }, [excitement])
 
   function handleChange(e) {
@@ -18,7 +27,7 @@ function HomePage() {
   return (
     <div>
       <h1>Adaptive Engine by Audio Intelligence Agency</h1>
-      <p><audio src={streamSrc} controls></audio></p>
+      <p><audio src={`${config.baseUrl}/stream/${sessID}`} controls></audio></p>
 
       <h2>Parameters</h2>
       <p>Excitement: {excitement}</p>
