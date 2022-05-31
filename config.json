@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://adapt-engine.au.ngrok.io"
+  "devBaseUrl": "http://localhost:3000",
+  "baseUrl": "https://adapt-dev.onrender.com"
 }

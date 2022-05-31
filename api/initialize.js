@@ -1,7 +1,8 @@
 import config from '../config.json'
+const baseUrl = process.env.ENV == "development" ? config.devBaseUrl : config.baseUrl
 
 export default async function initialize() {
-  const res = await fetch(`${config.baseUrl}/initialize`, {
+  const res = await fetch(`${baseUrl}/initialize`, {
     method: "POST",
     headers: {
       'Accept': 'application/json',
@@ -10,6 +11,5 @@ export default async function initialize() {
   })
 
   const json = await res.json()
-  console.log(json)
   return json['sess_id']
 }

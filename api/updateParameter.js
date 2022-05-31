@@ -1,7 +1,8 @@
 import config from '../config.json'
+const baseUrl = process.env.ENV == "development" ? config.devBaseUrl : config.baseUrl
 
 export default async function updateParameter(sessId, parameters) {
-  await fetch(`${config.baseUrl}/${sessId}/update`, {
+  const res = await fetch(`${config.baseUrl}/${sessId}/update`, {
     method: "POST",
     headers: {
       'Accept': 'application/json',
@@ -9,4 +10,6 @@ export default async function updateParameter(sessId, parameters) {
     },
     body: JSON.stringify(parameters)
   })
+  const text = await res.text()
+  console.log(text)
 }

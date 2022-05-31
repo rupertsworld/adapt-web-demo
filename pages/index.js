@@ -27,7 +27,7 @@ function HomePage() {
   return (
     <div>
       <h1>Adaptive Engine by Audio Intelligence Agency</h1>
-      <p><audio src={`${config.baseUrl}/stream/${sessID}`} controls></audio></p>
+      <p><audio src={sessID ? `${config.baseUrl}/stream/${sessID}` : ''} controls></audio></p>
 
       <h2>Parameters</h2>
       <p>Excitement: {excitement}</p>
