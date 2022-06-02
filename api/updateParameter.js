@@ -1,8 +1,8 @@
 import config from '../config.json'
-const baseUrl = process.env.ENV == "development" ? config.devBaseUrl : config.baseUrl
+const baseUrl = process.env.NEXT_PUBLIC_ENV == "development" ? config.devBaseUrl : config.baseUrl
 
 export default async function updateParameter(sessId, parameters) {
-  const res = await fetch(`${config.baseUrl}/${sessId}/update`, {
+  const res = await fetch(`${baseUrl}/${sessId}/update`, {
     method: "POST",
     headers: {
       'Accept': 'application/json',

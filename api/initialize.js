@@ -1,5 +1,5 @@
 import config from '../config.json'
-const baseUrl = process.env.ENV == "development" ? config.devBaseUrl : config.baseUrl
+const baseUrl = process.env.NEXT_PUBLIC_ENV == "development" ? config.devBaseUrl : config.baseUrl
 
 export default async function initialize() {
   const res = await fetch(`${baseUrl}/initialize`, {

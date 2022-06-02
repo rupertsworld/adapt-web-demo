@@ -1,4 +1,4 @@
 {
-  "devBaseUrl": "http://localhost:3000",
+  "devBaseUrl": "http://localhost:5000",
   "baseUrl": "https://adapt-dev.onrender.com"
 }
